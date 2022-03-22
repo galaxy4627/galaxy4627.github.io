@@ -1,5 +1,4 @@
 import { App } from './app.js'
-import { apps } from './apps.js';
 import { access } from './home.js';
 import { options } from './options.js';
 import { support } from './support.js';
@@ -203,7 +202,6 @@ document.querySelector('.access-panel').addEventListener('mouseenter', async eve
 });
 
 app.on('default', access);
-app.on('#apps', apps);
 app.on('#settings', options);
 app.on('#support', support);
 app.on('#community', community);
