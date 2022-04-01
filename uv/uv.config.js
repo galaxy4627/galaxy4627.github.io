@@ -1,6 +1,6 @@
 self.__uv$config = {
     prefix: '/?p=',
-    bare: 'https://uv1.aeroisthebestproxy.cf',
+    bare: 'https://uv2.aeroisthebestproxy.cf',
     encodeUrl: Ultraviolet.codec.plain.encode,
     decodeUrl: Ultraviolet.codec.plain.decode,
     handler: '/uv/uv.handler.js',
