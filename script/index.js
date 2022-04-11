@@ -1,4 +1,5 @@
 import { App } from './app.js'
+import { apps } from './apps.js';
 import { access } from './home.js';
 import { options } from './options.js';
 import { support } from './support.js';
@@ -34,7 +35,7 @@ app.destroyParticles = function() {
 document.querySelector('#open-nav').addEventListener('click', app.openNav);
 document.querySelector('#close-nav').addEventListener('click', app.closeNav);
 
-document.title = localStorage.getItem('incog||title') || '-';
+document.title = localStorage.getItem('incog||title') || 'Incognito';
 window.icon = document.querySelector('#favicon');
 
 icon.href = localStorage.getItem('incog||icon') || './index.svg';
@@ -202,6 +203,7 @@ document.querySelector('.access-panel').addEventListener('mouseenter', async eve
 });
 
 app.on('default', access);
+app.on('#apps', apps);
 app.on('#settings', options);
 app.on('#support', support);
 app.on('#community', community);
