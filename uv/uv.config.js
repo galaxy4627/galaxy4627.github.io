@@ -1,6 +1,9 @@
+const split = location.hostname.split('.');
+const domain = split.slice(0).slice(-(split.length === 4 ? 3 : 2)).join('.')
+
 self.__uv$config = {
     prefix: '/service/',
-    bare: 'http://35.237.181.245:443/bare/',
+    bare: 'https://client.'+domain+'/',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/uv/uv.handler.js',
