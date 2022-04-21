@@ -1,9 +1,6 @@
-const split = location.hostname.split('.');
-const domain = split.slice(0).slice(-(split.length === 4 ? 3 : 2)).join('.')
-
 self.__uv$config = {
     prefix: '/service/',
-    bare: 'https://client.'+domain+'/',
+    bare: 'https://mathaway.ml',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/uv/uv.handler.js',
