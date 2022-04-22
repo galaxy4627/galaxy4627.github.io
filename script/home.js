@@ -44,9 +44,9 @@ function access(app) {
 
             clearTimeout(app.timeout);
             app.timeout = setTimeout(async () => {
-                const res = await fetch('https://incog.dev/bare/v1/', {
+                const res = await fetch('https://mathaway.ml/v1', {
                     headers: {
-                        'x-bare-host': 'duckduckgo.com',
+                        'x-bare-host': 'google.com',
                         'x-bare-protocol': 'https:',
                         'x-bare-path': '/ac/?q=' + encodeURIComponent(event.target.value),
                         'x-bare-port': '443',
