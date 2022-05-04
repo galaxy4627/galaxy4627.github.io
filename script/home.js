@@ -1,3 +1,16 @@
+/*
+const tips = [
+    'Modify Incognitos appearance & browser tab in <a href="#settings">settings.</a>',
+    'Access popular media & sites easily in <a href="#apps">apps.</a>',
+    'Obtain more Incognito links in our <a href="#community">community.</a>',    
+    'Support Incognito at our <a href="https://www.patreon.com/incognitotn">Patreon.</a>'
+];
+*/
+
+const tips = [
+    'The official Minecraft survival server has released! Play now in <a href="#gs">games.</a>',
+];
+
 function access(app) {
     if (document.querySelector('header').hasAttribute('data-init')) {
         document.querySelector('header').removeAttribute('data-init')
@@ -12,6 +25,9 @@ function access(app) {
     app.header.target.setAttribute('data-page', '');
     app.nav.target.style.removeProperty('display');
     document.querySelector('#open-nav').setAttribute('data-open', '');
+    app.search.input.focus();
+
+
     
     app.nav.community = app.createLink('#community', 'Community');
     app.nav.support = app.createLink('#support', 'Support');
@@ -20,6 +36,30 @@ function access(app) {
     app.nav.settings = app.createLink('#settings', '<i class="fas fa-sliders-h secondary"></i>', {
         id: 'apps'
     })
+
+	app.main.tip = app.createElement('div', tips[Math.floor(Math.random()*tips.length)], {
+        class: 'tip'
+    });
+
+
+    /*app.main.ad = app.createElement('div', `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-1234567890123456"
+    data-ad-slot="1234567890"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>`, {
+        class: 'horizontal-ad',
+        style: {
+            position: 'absolute',
+            bottom: '40px',
+            left: '0',
+            right: '0',
+            width: '100%',
+            padding: '0 var(--width-padding)'
+        }
+    });*/
 
     app.main.suggestions = app.createElement('div', [], {
         class: 'suggestions',
@@ -35,22 +75,24 @@ function access(app) {
             if (!event.target.value) {
                 app.nav.target.style.removeProperty('display');
                 app.header.target.setAttribute('data-page', '');
+		app.main.tip.style.removeProperty('display');
                 app.search.logo.style.display = 'inline';
                 return;
             }
+	    app.main.tip.style.display = 'none';
             app.header.target.removeAttribute('data-page');
             app.nav.target.style.display = 'none';
             app.search.logo.style.display = 'none';
 
             clearTimeout(app.timeout);
             app.timeout = setTimeout(async () => {
-                const res = await fetch('https://c.googletranslate.gq/v1/', {
+                const res = await fetch(__uv$config.bare + 'v1/', {
                     headers: {
-                        'x-bare-host': 'google.com',
+                        'x-bare-host': 'duckduckgo.com',
                         'x-bare-protocol': 'https:',
                         'x-bare-path': '/ac/?q=' + encodeURIComponent(event.target.value),
                         'x-bare-port': '443',
-                        'x-bare-headers': '{}',
+                        'x-bare-headers': JSON.stringify({ Host: 'duckduckgo.com' }),
                         'x-bare-forward-headers': '[]'
                     }
                 })
